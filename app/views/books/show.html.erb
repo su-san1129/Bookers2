@@ -1,0 +1,19 @@
+
+<h2>Book detail</h2>
+<div class="col-xs-9">
+	<table class="table table-striped">
+	  <thead>
+		    <tr>
+			   <th>Title</th>
+			   <th>Opinion</th>
+		    </tr>
+		    <tr>
+		       <td><%= @book.title %></td>
+		       <td><%= @book.opinion %></td>
+		       <td><%= link_to "Edit", edit_book_path(@book.id), :class => "btn-sm btn-success" %></td>
+		       <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure", :class => "btn-sm btn-danger" %></td>
+
+		    </tr>
+	  </thead>
+	</table>
+</div>
