@@ -5,7 +5,21 @@
 <div class="container">
       <div class="row">
             <div class="col-xs-3">
-				<%= render 'users/list', user: @user %>
+				<h1>Users info</h1>
+				  <%= attachment_image_tag @user,:profile_image, :fill, 60, 60, format:"jpeg", class:"img-circle pull-left profile-img", fallback:"no_image.jpg" %>
+				    <table class="table">
+				      <tr>
+				        <th>name</th>
+				        <td><%= @user.username %></td>
+				      </tr>
+				      <tr>
+				        <th>introduction</th>
+				        <th><%= @user.introduction %></th>
+				      </tr>
+				    </table>
+				    <% if @user == current_user %>
+				      <%= link_to "edit", edit_user_path(current_user.id), :class => "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
+				    <% end %>
 
 				<%= render 'books/list', book: @book %>
 
