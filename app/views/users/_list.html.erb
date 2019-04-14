@@ -1,0 +1,15 @@
+  <h1>Users info</h1>
+  <%= attachment_image_tag current_user,:profile_image, :fill, 60, 60, format:"jpeg", class:"img-circle pull-left profile-img", fallback:"no_image.jpg" %>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <td><%= current_user.username %></td>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= current_user.introduction %></th>
+      </tr>
+    </table>
+    <% if current_user %>
+      <%= link_to "edit", edit_user_path(current_user.id), :class => "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
+    <% end %>

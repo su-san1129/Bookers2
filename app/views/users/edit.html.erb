@@ -1,0 +1,25 @@
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user.errors.count %>error prohibited this obj from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+<% end %>
+
+ <div class="row">
+     <div class="col-xs-3">
+		<h2>User info</h2>
+		<%= form_for(@user) do |f| %>
+		    <div class="form-group">
+		        <label>Name</label>
+		        <%= f.text_field :username, autofocus: true, class:"form-control name", placeholder:"名前" %>
+			    <label>Image</label>
+			    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form user_image" %>
+		    	<label>Introduction</label>
+		    	<%= f.text_area :introduction, placeholder:"自己紹介", :class => "introduction" %>
+		    <%= f.submit "変更を保存", class:"btn" %>
+		    </div>
+		<% end %>
+	</div>
+</div>

@@ -1,19 +1,47 @@
+<p id="notice">
+ <%= notice %>
+</p>
 
-<h2>Book detail</h2>
-<div class="col-xs-9">
-	<table class="table table-striped">
-	  <thead>
-		    <tr>
-			   <th>Title</th>
-			   <th>Opinion</th>
-		    </tr>
-		    <tr>
-		       <td><%= @book.title %></td>
-		       <td><%= @book.opinion %></td>
-		       <td><%= link_to "Edit", edit_book_path(@book.id), :class => "btn-sm btn-success" %></td>
-		       <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure", :class => "btn-sm btn-danger" %></td>
+<div class="row">
+		<div class="col-xs-3" >
+			 <h1>Users info</h1>
+	                  <%= attachment_image_tag @book.user,:profile_image, :fill, 60, 60, format:"jpeg", class:"img-circle pull-left profile-img", fallback:"no_image.jpg" %>
+	                    <table class="table">
+	                      <tr>
+	                        <th>name</th>
+	                        <td><%= @user.username %></td>
+	                      </tr>
+	                      <tr>
+	                        <th>introduction</th>
+	                        <th><%= @user.introduction %></th>
+	                      </tr>
+	                    </table>
 
-		    </tr>
-	  </thead>
-	</table>
+	                 <% if @user == current_user %>
+					<%= link_to "edit", edit_user_path, :class => "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+					<% end %>
+
+					<%= render 'books/list', book: @booknew %>
+		</div>
+
+			<h2>Book detail</h2>
+			<div class="col-xs-9">
+				<table class="table table-striped">
+				  <thead>
+					    <tr>
+						   <th>Title</th>
+						   <th>Opinion</th>
+					    </tr>
+					    <tr>
+					       <td><%= @book.title %></td>
+					       <td><%= @book.opinion %></td>
+					       <% if @book.user == current_user %>
+					       <td><%= link_to "Edit", edit_book_path(@book.id), :class => "btn-sm btn-success edit_book_#{@book.id}" %></td>
+					       <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure", :class => "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
+					       <% end %>
+
+					    </tr>
+				  </thead>
+				</table>
+			</div>
 </div>
