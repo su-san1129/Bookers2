@@ -18,7 +18,7 @@
 	                    </table>
 
 	                 <% if @user == current_user %>
-					<%= link_to "edit", edit_user_path, :class => "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+					<%= link_to "edit", edit_user_path(current_user.id), :class => "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 					<% end %>
 
 					<%= render 'books/list', book: @booknew %>
